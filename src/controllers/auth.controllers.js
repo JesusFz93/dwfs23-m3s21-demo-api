@@ -58,7 +58,21 @@ const iniciarSesion = async (req, res) => {
   });
 };
 
+const validarUsuario = async (req, res) => {
+  const user = req.user;
+
+  const token = await generarJWT(user.id);
+
+  return res.json({
+    ok: true,
+    msg: "Usuario validado",
+    data: user,
+    token: token,
+  });
+};
+
 module.exports = {
   registrarUsuario,
   iniciarSesion,
+  validarUsuario,
 };
