@@ -13,6 +13,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/usuarios", require("./routes/users.routes"));
+app.use("/auth", require("./routes/auth.routes"));
 // app.use("/movies", require("./routes/movies.routes"));
 
 app.listen(process.env.PORT, () => {
