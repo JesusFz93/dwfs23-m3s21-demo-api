@@ -34,4 +34,10 @@ const UserSchema = Schema({
   telefono: String,
 });
 
+UserSchema.methods.toJSON = function () {
+  const { __v, _id, ...rest } = this.toObject();
+  rest.id = _id;
+  return rest;
+};
+
 module.exports = model("user", UserSchema, "users");
