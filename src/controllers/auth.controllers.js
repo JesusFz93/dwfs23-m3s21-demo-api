@@ -25,6 +25,40 @@ const registrarUsuario = async (req, res) => {
   });
 };
 
+const iniciarSesion = async (req, res) => {
+  const { user_name, password } = req.body;
+
+  const user = await User.findOne({ user_name: user_name });
+
+  if (!user) {
+    return res.status(400).json({
+      ok: false,
+      msg: "Usuario o contraseña incorrectos",
+      data: {},
+    });
+  }
+
+  const validPassord = bcrypt.compareSync(password, user.password);
+
+  if (!validPassord) {
+    return res.status(400).json({
+      ok: false,
+      msg: "Usuario o contraseña incorrectos",
+      data: {},
+    });
+  }
+
+  const token = await generarJWT(user.id);
+
+  return res.json({
+    ok: true,
+    msg: "Acceso correcto",
+    data: user,
+    token: token,
+  });
+};
+
 module.exports = {
   registrarUsuario,
+  iniciarSesion,
 };
