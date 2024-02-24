@@ -7,6 +7,16 @@ const registrarUsuario = async (req, res) => {
   try {
     const { user_name, password } = req.body;
 
+    const user = await User.findOne({ user_name: user_name });
+
+    if (user) {
+      return res.status(400).json({
+        ok: false,
+        msg: "Este usuario ya esta registrado",
+        data: {},
+      });
+    }
+
     const salt = bcrypt.genSaltSync(10);
 
     const usuario = {
