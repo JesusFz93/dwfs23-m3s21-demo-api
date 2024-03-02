@@ -1,0 +1,39 @@
+# @api = http://megatools.megatechway.com:4001/api/v1/folios
+@api = http://localhost:4000
+
+###SALUDO
+GET {{api}}
+
+
+### Folio
+POST {{api}}
+Content-Type: application/json
+
+{
+    "QTY": 3,
+    "USUARIO": "ff"
+}
+
+### Prueba 2
+POST {{api}}/test2
+Content-Type: application/json
+
+{
+    "QTY": 45,
+    "USUARIO": "admin",
+    "FOLIO": "123456789",
+    "FECHA": "2018-01-01",
+    "HORA": "12:00:00"
+}
+
+### Prueba 3
+POST {{api}}/test3
+Content-Type: application/json
+
+{
+    "QTY": 45,
+    "USUARIO": "admin",
+    "FOLIO": "123456789",
+    "FECHA": "2018-01-01",
+    "HORA": "12:00:00"
+}
