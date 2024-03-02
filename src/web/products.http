@@ -1,0 +1,5 @@
+### Obtener productos
+GET http://localhost:4000/productos
+
+### Obtener un producto por id
+GET http://localhost:4000/productos/65d10c061dde436fe0c17a40
